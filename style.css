@@ -3,7 +3,7 @@
    Sistema: madera vieja + pergamino + sello de lacre
    ========================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Pirata+One&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Vollkorn:ital,wght@0,400;0,600;1,400&display=swap');
 
 :root{
   --void:        #100c09;
@@ -22,6 +22,7 @@
   --font-display: 'IM Fell English SC', serif;
   --font-deco:    'Pirata One', cursive;
   --font-body:    'IM Fell English', serif;
+  --font-data:    'Vollkorn', serif;
 
   --radius-torn: 3px;
 }
@@ -212,6 +213,77 @@ a:focus-visible, button:focus-visible{
   margin: 0;
 }
 
+/* ---------- Mapa (ventana modal) ---------- */
+.map-trigger-wrap{
+  text-align:center;
+  margin: -12px 0 44px;
+}
+.map-trigger{
+  display:inline-flex; align-items:center; gap:10px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color: var(--parchment);
+  background: var(--wood-2);
+  border: 1px solid var(--brass);
+  border-radius: 30px;
+  padding: 12px 26px;
+  cursor:pointer;
+  transition: background .15s ease, transform .15s ease;
+}
+.map-trigger:hover{ background: var(--oxblood-dark); transform: translateY(-2px); }
+
+.map-modal-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(6,4,2,.82);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 24px;
+  z-index: 100;
+}
+.map-modal-overlay.hidden{ display:none; }
+
+.map-modal{
+  position:relative;
+  max-width: min(900px, 92vw);
+  max-height: 88vh;
+  background: var(--parchment);
+  border: 1px solid var(--parchment-edge);
+  border-radius: var(--radius-torn);
+  padding: 14px;
+  box-shadow: 0 30px 60px rgba(0,0,0,.6);
+}
+.map-modal img{
+  display:block;
+  max-width: 100%;
+  max-height: 78vh;
+  margin: 0 auto;
+}
+.map-modal-close{
+  position:absolute;
+  top: -16px; right: -16px;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--oxblood-dark);
+  color: var(--parchment);
+  border: 2px solid var(--brass);
+  font-family: var(--font-display);
+  font-size: 18px;
+  line-height: 1;
+  cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+}
+.map-modal-caption{
+  text-align:center;
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-top: 10px;
+}
+
 footer.site-footer{
   text-align:center;
   padding: 28px 0 60px;
@@ -310,13 +382,14 @@ footer.site-footer a{ text-decoration:none; border-bottom:1px dotted var(--brass
   color: var(--oxblood-dark);
 }
 .ability-medal .score{
-  font-family: var(--font-display);
-  font-size: 26px;
+  font-family: var(--font-data);
+  font-size: 28px;
   font-weight:700;
   line-height:1.1;
 }
 .ability-medal .mod{
-  font-size: 13px;
+  font-family: var(--font-data);
+  font-size: 14px;
   color: var(--ink-soft);
 }
 
@@ -337,8 +410,9 @@ footer.site-footer a{ text-decoration:none; border-bottom:1px dotted var(--brass
   display:block;
 }
 .stat-chip .value{
-  font-family: var(--font-display);
-  font-size: 22px;
+  font-family: var(--font-data);
+  font-weight: 600;
+  font-size: 23px;
   color: var(--oxblood-dark);
 }
 
@@ -347,7 +421,7 @@ footer.site-footer a{ text-decoration:none; border-bottom:1px dotted var(--brass
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 8px 32px;
 }
-.list-plain{ list-style:none; margin:0; padding:0; }
+.list-plain{ list-style:none; margin:0; padding:0; font-family: var(--font-data); font-size: 16px; }
 .list-plain li{
   padding: 7px 0;
   border-bottom: 1px dotted var(--parchment-edge);
@@ -361,7 +435,7 @@ footer.site-footer a{ text-decoration:none; border-bottom:1px dotted var(--brass
 .tag-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
 .tag{
   font-family: var(--font-display);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing:.05em;
   text-transform:uppercase;
   background: var(--oxblood-dark);
@@ -381,12 +455,13 @@ footer.site-footer a{ text-decoration:none; border-bottom:1px dotted var(--brass
 .item-card .item-name{
   font-family: var(--font-display);
   color: var(--oxblood-dark);
-  font-size: 16px;
+  font-size: 17px;
   display:block;
   margin-bottom: 4px;
 }
 .item-card .item-meta{
-  font-size: 13px;
+  font-family: var(--font-data);
+  font-size: 16px;
   color: var(--ink-soft);
   font-style: italic;
 }
@@ -395,10 +470,11 @@ footer.site-footer a{ text-decoration:none; border-bottom:1px dotted var(--brass
   background: rgba(0,0,0,.3);
   padding: 1px 6px;
   border-radius: 3px;
-  font-family: var(--font-body);
+  font-family: var(--font-data);
 }
 .placeholder-note{
-  font-size: 13px;
+  font-family: var(--font-data);
+  font-size: 14px;
   color: var(--brass-bright);
   font-style: italic;
   background: rgba(0,0,0,.25);

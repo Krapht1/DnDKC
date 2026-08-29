@@ -32,6 +32,14 @@ Cada personaje usa una sola imagen, referenciada como `assets/pjN.png` tanto en 
 - **Dimensiones:** cuadrado, recomendado **500×500px o más** (mínimo 300×300px). Se recorta automáticamente en círculo, así que centrá la cara/el sujeto en el medio de la imagen.
 - Los `.svg` que vienen en `assets/` son siluetas de referencia — podés borrarlos una vez que subas las fotos reales.
 
+## El mapa
+
+En la landing hay un botón "🗺 Ver el mapa" que abre una ventana modal con una imagen. Para poner el mapa real:
+
+- Reemplazá `assets/mapa.svg` por tu imagen (por ejemplo `assets/mapa.png` o `.jpg`) y actualizá el `src` del `<img id="mapImage">` en `index.html`.
+- No hay una medida obligatoria: la imagen se ajusta automáticamente al espacio disponible en la ventana (hasta 900px de ancho, 78% de la altura de pantalla). Cuanto más grande y nítida la subas, mejor se va a ver al hacer zoom.
+- Editá o borrá el texto "EDITAR — pie de foto o leyenda del mapa" debajo de la imagen, según necesites.
+
 ## Desplegar en GitHub Pages
 
 ```bash

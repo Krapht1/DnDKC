@@ -1,0 +1,415 @@
+/* =========================================================
+   ONESHOT — Tablón del Gremio
+   Sistema: madera vieja + pergamino + sello de lacre
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&display=swap');
+
+:root{
+  --void:        #100c09;
+  --wood:        #1c140f;
+  --wood-2:      #241a13;
+  --parchment:   #e9dcbe;
+  --parchment-2: #dccb9f;
+  --parchment-edge: #c7b587;
+  --ink:         #2c2013;
+  --ink-soft:    #4a3a24;
+  --oxblood:     #7d2c1c;
+  --oxblood-dark:#5c1f13;
+  --brass:       #a9843c;
+  --brass-bright:#d4af37;
+
+  --font-display: 'IM Fell English SC', serif;
+  --font-deco:    'Pirata One', cursive;
+  --font-body:    'IM Fell English', serif;
+
+  --radius-torn: 3px;
+}
+
+*{ box-sizing:border-box; }
+
+html{ scroll-behavior:smooth; }
+
+body{
+  margin:0;
+  background-color: var(--void);
+  background-image:
+    radial-gradient(ellipse at 20% -10%, rgba(122,60,20,0.10), transparent 55%),
+    radial-gradient(ellipse at 90% 10%, rgba(90,50,20,0.08), transparent 50%),
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.35) 0px, rgba(0,0,0,0.35) 1px, transparent 1px, transparent 3px);
+  color: var(--parchment);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+a{ color: inherit; }
+
+.wrap{
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Focus / motion baseline ---------- */
+a:focus-visible, button:focus-visible{
+  outline: 2px solid var(--brass-bright);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce){
+  *{ animation: none !important; transition: none !important; }
+  html{ scroll-behavior:auto; }
+}
+
+/* ---------- Ornamento de divisores ---------- */
+.divider{
+  display:flex; align-items:center; gap:14px;
+  margin: 8px 0 28px;
+  color: var(--brass);
+}
+.divider::before, .divider::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background: linear-gradient(90deg, transparent, var(--brass), transparent);
+  opacity:.65;
+}
+.divider .glyph{ font-size:20px; letter-spacing:6px; }
+
+/* =========================================================
+   LANDING
+   ========================================================= */
+
+.hero{
+  padding: 72px 0 40px;
+  text-align:center;
+  position:relative;
+}
+.hero .eyebrow{
+  font-family: var(--font-display);
+  letter-spacing: .35em;
+  text-transform:uppercase;
+  font-size: 13px;
+  color: var(--brass-bright);
+  margin: 0 0 18px;
+}
+.hero h1{
+  font-family: var(--font-deco);
+  font-size: clamp(34px, 6vw, 64px);
+  line-height:1.1;
+  margin: 0 0 14px;
+  color: var(--parchment);
+  text-shadow: 0 2px 0 rgba(0,0,0,.5), 0 0 30px rgba(212,175,55,.12);
+}
+.hero .sub{
+  font-family: var(--font-body);
+  font-style: italic;
+  color: var(--parchment-2);
+  max-width: 560px;
+  margin: 0 auto;
+  font-size: 20px;
+}
+
+.scroll-panel{
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.08) 100%),
+    var(--parchment);
+  color: var(--ink);
+  border-radius: var(--radius-torn);
+  padding: 34px 38px;
+  margin: 34px 0 56px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.25) inset,
+    0 18px 40px rgba(0,0,0,.45);
+  position:relative;
+  border: 1px solid var(--parchment-edge);
+}
+.scroll-panel::before, .scroll-panel::after{
+  content:"";
+  position:absolute; left:14px; right:14px; height:14px;
+  background: repeating-linear-gradient(90deg, var(--parchment) 0 10px, var(--parchment-2) 10px 12px);
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,.25));
+}
+.scroll-panel::before{ top:-7px; border-radius: 50% 50% 0 0 / 100% 100% 0 0; }
+.scroll-panel::after{ bottom:-7px; border-radius: 0 0 50% 50% / 0 0 100% 100%; }
+
+.scroll-panel h2{
+  font-family: var(--font-display);
+  font-size: 22px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color: var(--oxblood-dark);
+  margin-top:0;
+}
+.scroll-panel p{ margin: 0 0 14px; }
+.scroll-panel p:last-child{ margin-bottom:0; }
+
+.meta-row{
+  display:flex; flex-wrap:wrap; gap: 10px 28px;
+  margin-top: 20px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing:.04em;
+  color: var(--ink-soft);
+}
+.meta-row strong{ color: var(--oxblood-dark); }
+
+/* ---------- Tablón de personajes ---------- */
+.board-title{
+  font-family: var(--font-display);
+  text-align:center;
+  text-transform:uppercase;
+  letter-spacing:.25em;
+  font-size:15px;
+  color: var(--brass-bright);
+  margin: 0 0 8px;
+}
+
+.board{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 28px;
+  padding: 10px 0 80px;
+}
+
+.pj-card{
+  display:block;
+  text-align:center;
+  text-decoration:none;
+  color: var(--parchment);
+  transition: transform .18s ease;
+}
+.pj-card:hover, .pj-card:focus-visible{
+  transform: translateY(-6px);
+}
+
+.pj-portrait{
+  width: 100%;
+  margin: 0 0 0;
+  line-height: 0;
+}
+.pj-portrait img{ width:100%; height:auto; display:block; }
+
+.pj-infobox{
+  background: var(--parchment);
+  color: var(--ink);
+  border: 1px solid var(--parchment-edge);
+  border-top: none;
+  border-radius: 0 0 var(--radius-torn) var(--radius-torn);
+  padding: 12px 14px;
+  box-shadow: 0 10px 18px rgba(0,0,0,.4);
+}
+.pj-name{
+  font-family: var(--font-display);
+  font-size: 20px;
+  margin: 0 0 2px;
+  color: var(--oxblood-dark);
+}
+.pj-class{
+  font-size: 15px;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+footer.site-footer{
+  text-align:center;
+  padding: 28px 0 60px;
+  color: var(--ink-soft);
+  font-size: 13px;
+}
+footer.site-footer a{ text-decoration:none; border-bottom:1px dotted var(--brass); }
+
+/* =========================================================
+   FICHA DE PERSONAJE
+   ========================================================= */
+
+.back-link{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  text-decoration:none;
+  color: var(--brass-bright);
+  margin: 26px 0 10px;
+}
+.back-link:hover{ color: var(--parchment); }
+
+.sheet-header{
+  max-width: 320px;
+  margin: 28px 0 10px;
+}
+.sheet-portrait{
+  width: 100%;
+  line-height: 0;
+}
+.sheet-portrait img{ width:100%; height:auto; display:block; }
+
+.sheet-heading{
+  background: var(--parchment);
+  color: var(--ink);
+  border: 1px solid var(--parchment-edge);
+  border-top: none;
+  border-radius: 0 0 var(--radius-torn) var(--radius-torn);
+  padding: 16px 24px;
+  box-shadow: 0 10px 20px rgba(0,0,0,.35);
+}
+.sheet-heading h1{
+  font-family: var(--font-deco);
+  font-size: clamp(26px, 4vw, 38px);
+  margin: 0 0 4px;
+  color: var(--oxblood-dark);
+}
+.sheet-heading .race-class{
+  font-family: var(--font-display);
+  font-size: 17px;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.sheet-panel{
+  background: var(--parchment);
+  color: var(--ink);
+  border-radius: var(--radius-torn);
+  border: 1px solid var(--parchment-edge);
+  padding: 28px 30px;
+  margin: 22px 0;
+  box-shadow: 0 14px 30px rgba(0,0,0,.4);
+}
+.sheet-panel h2{
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing:.1em;
+  font-size: 18px;
+  color: var(--oxblood-dark);
+  margin: 0 0 18px;
+  border-bottom: 1px solid var(--parchment-edge);
+  padding-bottom: 10px;
+}
+
+/* --- Medallones de característica --- */
+.abilities{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(84px, 1fr));
+  gap: 16px;
+  text-align:center;
+}
+.ability-medal{
+  background: radial-gradient(circle at 35% 30%, #f1e6c8, var(--parchment-2) 70%);
+  border: 2px solid var(--brass);
+  border-radius: 50%;
+  aspect-ratio: 1;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  box-shadow: inset 0 0 0 3px rgba(0,0,0,.05), 0 3px 6px rgba(0,0,0,.25);
+}
+.ability-medal .label{
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing:.08em;
+  color: var(--oxblood-dark);
+}
+.ability-medal .score{
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight:700;
+  line-height:1.1;
+}
+.ability-medal .mod{
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+/* --- Grillas de datos (tiradas de salvación, habilidades, stats vitales) --- */
+.stat-row{
+  display:flex; flex-wrap:wrap; gap: 14px 34px;
+  margin-bottom: 6px;
+}
+.stat-chip{
+  min-width: 90px;
+}
+.stat-chip .label{
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color: var(--ink-soft);
+  display:block;
+}
+.stat-chip .value{
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--oxblood-dark);
+}
+
+.two-col{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 8px 32px;
+}
+.list-plain{ list-style:none; margin:0; padding:0; }
+.list-plain li{
+  padding: 7px 0;
+  border-bottom: 1px dotted var(--parchment-edge);
+  display:flex; justify-content:space-between; gap: 10px;
+}
+.list-plain li:last-child{ border-bottom:none; }
+
+.lore p{ margin: 0 0 14px; }
+.lore p:last-child{ margin-bottom:0; }
+
+.tag-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
+.tag{
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  background: var(--oxblood-dark);
+  color: var(--parchment);
+  padding: 5px 11px;
+  border-radius: 20px;
+}
+
+.item-card{
+  border: 1px solid var(--parchment-edge);
+  border-radius: var(--radius-torn);
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  background: rgba(0,0,0,.03);
+}
+.item-card:last-child{ margin-bottom:0; }
+.item-card .item-name{
+  font-family: var(--font-display);
+  color: var(--oxblood-dark);
+  font-size: 16px;
+  display:block;
+  margin-bottom: 4px;
+}
+.item-card .item-meta{
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.placeholder-note code{
+  background: rgba(0,0,0,.3);
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-family: var(--font-body);
+}
+.placeholder-note{
+  font-size: 13px;
+  color: var(--brass-bright);
+  font-style: italic;
+  background: rgba(0,0,0,.25);
+  border: 1px dashed var(--brass);
+  border-radius: var(--radius-torn);
+  padding: 10px 14px;
+  margin: 0 0 22px;
+}
+
+@media (max-width: 560px){
+  body{ font-size: 16.5px; }
+  .sheet-header{ text-align:center; justify-content:center; }
+  .sheet-panel{ padding: 22px 18px; }
+}

@@ -37,7 +37,7 @@
   </section>
 
   <div class="map-trigger-wrap">
-    <button class="map-trigger" id="mapTrigger" type="button">🗺 Ver el mapa</button>
+    <a class="map-trigger" href="mapa.html">🗺 Ver el mapa</a>
   </div>
 
   <div class="divider"><span class="glyph">⚔</span></div>
@@ -93,32 +93,6 @@
   </footer>
 
 </div>
-
-<div class="map-modal-overlay hidden" id="mapOverlay">
-  <div class="map-modal">
-    <button class="map-modal-close" id="mapClose" type="button" aria-label="Cerrar mapa">×</button>
-    <img src="assets/mapa.svg" alt="Mapa de la región de la oneshot" id="mapImage">
-    <p class="map-modal-caption">EDITAR — pie de foto o leyenda del mapa</p>
-  </div>
-</div>
-
-<script>
-  var overlay = document.getElementById('mapOverlay');
-  var trigger = document.getElementById('mapTrigger');
-  var closeBtn = document.getElementById('mapClose');
-
-  function openMap(){ overlay.classList.remove('hidden'); }
-  function closeMap(){ overlay.classList.add('hidden'); }
-
-  trigger.addEventListener('click', openMap);
-  closeBtn.addEventListener('click', closeMap);
-  overlay.addEventListener('click', function(e){
-    if(e.target === overlay){ closeMap(); }
-  });
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape'){ closeMap(); }
-  });
-</script>
 
 </body>
 </html>

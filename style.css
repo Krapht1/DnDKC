@@ -213,7 +213,7 @@ a:focus-visible, button:focus-visible{
   margin: 0;
 }
 
-/* ---------- Mapa (ventana modal) ---------- */
+/* ---------- Enlace al mapa (landing) ---------- */
 .map-trigger-wrap{
   text-align:center;
   margin: -12px 0 44px;
@@ -229,59 +229,33 @@ a:focus-visible, button:focus-visible{
   border: 1px solid var(--brass);
   border-radius: 30px;
   padding: 12px 26px;
+  text-decoration:none;
   cursor:pointer;
   transition: background .15s ease, transform .15s ease;
 }
 .map-trigger:hover{ background: var(--oxblood-dark); transform: translateY(-2px); }
 
-.map-modal-overlay{
-  position: fixed;
-  inset: 0;
-  background: rgba(6,4,2,.82);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding: 24px;
-  z-index: 100;
-}
-.map-modal-overlay.hidden{ display:none; }
-
-.map-modal{
-  position:relative;
-  max-width: min(900px, 92vw);
-  max-height: 88vh;
+/* ---------- Página del mapa ---------- */
+.map-frame{
   background: var(--parchment);
   border: 1px solid var(--parchment-edge);
   border-radius: var(--radius-torn);
-  padding: 14px;
-  box-shadow: 0 30px 60px rgba(0,0,0,.6);
+  padding: 16px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.45);
+  margin: 20px 0 8px;
 }
-.map-modal img{
+.map-frame img{
   display:block;
-  max-width: 100%;
-  max-height: 78vh;
-  margin: 0 auto;
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
 }
-.map-modal-close{
-  position:absolute;
-  top: -16px; right: -16px;
-  width: 38px; height: 38px;
-  border-radius: 50%;
-  background: var(--oxblood-dark);
-  color: var(--parchment);
-  border: 2px solid var(--brass);
-  font-family: var(--font-display);
-  font-size: 18px;
-  line-height: 1;
-  cursor:pointer;
-  display:flex; align-items:center; justify-content:center;
-}
-.map-modal-caption{
+.map-caption{
   text-align:center;
   font-family: var(--font-display);
-  font-size: 13px;
-  color: var(--ink-soft);
-  margin-top: 10px;
+  font-size: 14px;
+  color: var(--parchment-2);
+  margin: 4px 0 30px;
 }
 
 footer.site-footer{

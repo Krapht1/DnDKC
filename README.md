@@ -34,11 +34,12 @@ Cada personaje usa una sola imagen, referenciada como `assets/pjN.png` tanto en 
 
 ## El mapa
 
-En la landing hay un botón "🗺 Ver el mapa" que abre una ventana modal con una imagen. Para poner el mapa real:
+Hay una página propia para el mapa: `mapa.html`, enlazada desde el botón "🗺 Ver el mapa" en la landing.
 
-- Reemplazá `assets/mapa.svg` por tu imagen (por ejemplo `assets/mapa.png` o `.jpg`) y actualizá el `src` del `<img id="mapImage">` en `index.html`.
-- No hay una medida obligatoria: la imagen se ajusta automáticamente al espacio disponible en la ventana (hasta 900px de ancho, 78% de la altura de pantalla). Cuanto más grande y nítida la subas, mejor se va a ver al hacer zoom.
+- La imagen se referencia como `assets/map.png` (ajustá el nombre/extensión en el `<img>` de `mapa.html` si tu archivo se llama distinto, por ejemplo `.jpg`).
+- No hay una medida obligatoria: la imagen ocupa el ancho del contenedor (hasta ~1080px) y se ajusta sola en alto. Cuanto más grande y nítida la subas, mejor se ve al hacer zoom.
 - Editá o borrá el texto "EDITAR — pie de foto o leyenda del mapa" debajo de la imagen, según necesites.
+- Está pensado para más adelante sumar un menú lateral que permita ver el mapa junto con la ficha de un personaje seleccionado — por ahora es una página simple con solo el mapa.
 
 ## Desplegar en GitHub Pages
 

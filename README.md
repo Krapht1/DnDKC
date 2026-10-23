@@ -1,4 +1,4 @@
-# El Convite de Sangre Fría — Oneshot
+# El Conmite de Sangre Fría — Oneshot
 
 Landing + fichas de personaje para una sesión única de D&D 5e. Sitio 100% estático (HTML/CSS puro, sin build ni dependencias), listo para GitHub Pages, Netlify o Cloudflare Pages.
 
